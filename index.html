@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Panadería y Pastelería Artesanal Dulce Tentación. Catálogo digital completo con panes frescos, tortas temáticas personalizadas y pedidos directos por WhatsApp.">
+  <title>DULCE TENTACION – Panadería & Pastelería Artesanal</title>
+  <!-- Favicon / Icono del Sitio Web -->
+  <link rel="icon" type="image/png" href="imagenes/logo_dulcetentacion.png">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="imagenes/logo_dulcetentacion.png">
+  
+  <!-- FontAwesome Iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Hoja de Estilos con version para evitar cache -->
+  <link rel="stylesheet" href="styles.css?v=3.0">
+
+  <!-- Estilos garantizados para botones flotantes y de portada -->
+  <style>
+    .floating-actions-container {
+      position: fixed !important;
+      bottom: 84px !important;
+      right: 22px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 12px !important;
+      z-index: 999999 !important;
+      align-items: center !important;
+      pointer-events: auto !important;
+    }
+    .floating-btn {
+      width: 52px !important;
+      height: 52px !important;
+      border-radius: 50% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      color: #ffffff !important;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease !important;
+      position: relative !important;
+      text-decoration: none !important;
+      cursor: pointer !important;
+    }
+    .floating-btn:hover {
+      transform: scale(1.15) translateY(-3px) !important;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.42) !important;
+      color: #ffffff !important;
+    }
+    .floating-btn.floating-wa {
+      background: #25d366 !important;
+      box-shadow: 0 5px 20px rgba(37, 211, 102, 0.55) !important;
+    }
+    .floating-btn.floating-ig {
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) !important;
+      box-shadow: 0 5px 20px rgba(220, 39, 67, 0.55) !important;
+    }
+    .floating-btn.floating-fb {
+      background: linear-gradient(135deg, #1877f2 0%, #0d65d9 100%) !important;
+      box-shadow: 0 5px 20px rgba(24, 119, 242, 0.55) !important;
+    }
+    .floating-btn svg {
+      width: 25px !important;
+      height: 25px !important;
+      fill: #ffffff !important;
+      display: block !important;
+    }
+    .floating-tooltip {
+      position: absolute !important;
+      right: calc(100% + 12px) !important;
+      background: rgba(26, 14, 2, 0.94) !important;
+      backdrop-filter: blur(8px) !important;
+      color: #ffffff !important;
+      font-size: 0.82rem !important;
+      font-weight: 700 !important;
+      padding: 6px 12px !important;
+      border-radius: 8px !important;
+      white-space: nowrap !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      transform: translateX(8px) !important;
+      transition: all 0.25s ease !important;
+      pointer-events: none !important;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25) !important;
+      border: 1px solid rgba(255, 255, 255, 0.15) !important;
+      font-family: 'Jost', sans-serif !important;
+    }
+    .floating-tooltip::after {
+      content: '' !important;
+      position: absolute !important;
+      left: 100% !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      border-width: 5px !important;
+      border-style: solid !important;
+      border-color: transparent transparent transparent rgba(26, 14, 2, 0.94) !important;
+    }
+    .floating-btn:hover .floating-tooltip {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: translateX(0) !important;
+    }
+    @media(max-width: 600px) {
+      .floating-actions-container {
+        right: 14px !important;
+        bottom: 74px !important;
+        gap: 10px !important;
+      }
+      .floating-btn {
+        width: 46px !important;
+        height: 46px !important;
+      }
+      .floating-btn svg {
+        width: 22px !important;
+        height: 22px !important;
+      }
+      .floating-tooltip {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- BARRA DE ANUNCIO SUPERIOR -->
+<div class="top-bar">
+  🥐 ¡Pan fresco recién horneado todos los días! Pedidos al instante vía <strong>WhatsApp</strong> (domicilios solo para tiendas) 🥖
+</div>
+
+<!-- HEADER Y NAVEGACIÓN -->
+<header class="site-header" id="site-header">
+  <div class="container header-inner">
+    <a href="#inicio" class="brand-logo" id="brand-logo">
+      <div class="logo-icon-wrap"><img src="imagenes/logo_dulcetentacion.png" alt="Dulce Tentación Logo"></div>
+      <div class="brand-text">
+        <h1>DULCE TENTACION</h1>
+        <span>Panadería &amp; Pastelería Artesanal</span>
+      </div>
+    </a>
+    
+    <nav class="nav-menu" id="nav-menu">
+      <a href="#inicio" class="nav-link active" id="nl-inicio">Inicio</a>
+      <a href="#nosotros" class="nav-link" id="nl-nosotros">Nosotros</a>
+      <a href="#equipo" class="nav-link" id="nl-equipo">Equipo de Trabajo</a>
+      <a href="#justificacion" class="nav-link" id="nl-justificacion">¿Por qué Digital?</a>
+      
+      <!-- Menú Desplegable: Pan -->
+      <div class="nav-dropdown" id="nav-dropdown">
+        <button class="nav-link dropdown-toggle" id="dd-toggle">
+          Pan <i class="fa-solid fa-chevron-down" style="font-size:0.72rem;margin-left:4px;"></i>
+        </button>
+        <div class="dropdown-menu" id="dd-menu">
+          <a href="#catalogo" class="dropdown-item" data-filter="panes">🥖 Pan Fresco</a>
+          <a href="#catalogo" class="dropdown-item" data-filter="reposteria">🍰 Repostería &amp; Tortas</a>
+        </div>
+      </div>
+      
+      <a href="#catalogo" class="nav-link" id="nl-catalogo">Catálogo de Productos</a>
+      <a href="#contacto" class="nav-link" id="nl-contacto">Contacto &amp; Horarios</a>
+    </nav>
+    
+    <div class="header-actions">
+      <div class="header-social-pills">
+        <a href="https://wa.me/573214620314" target="_blank" rel="noopener noreferrer" class="hdr-social-btn wa" title="WhatsApp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/dulcetentacion1413?dlrf=MTFwOXV3djd4NnV2cg==" target="_blank" rel="noopener noreferrer" class="hdr-social-btn ig" title="Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61592760298786&mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer" class="hdr-social-btn fb" title="Facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      </div>
+      <button class="admin-trigger-btn" id="admin-trigger" title="Panel de Administración" aria-label="Administración">
+        <i class="fa-solid fa-lock"></i>
+        <span>Admin</span>
+      </button>
+      <button class="cart-trigger" id="cart-trigger" aria-label="Ver Carrito">
+        <i class="fa-solid fa-basket-shopping" style="color:var(--primary);"></i>
+        <span>Mi Pedido</span>
+        <span class="cart-badge" id="cart-badge">0</span>
+      </button>
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Menú móvil">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO / PORTADA -->
+<section class="hero-section" id="inicio">
+  <div class="container hero-grid">
+    <div class="hero-content">
+      <div class="badge-tag">
+        <i class="fa-solid fa-star"></i> El Sabor Artesanal que Enamora
+      </div>
+      <h2 class="hero-title">Panadería &amp; Pastelería <span>Dulce Tentación</span></h2>
+      <p class="hero-subtitle">
+        Descubre el aroma y la frescura de nuestros panes artesanales, tortas personalizadas y repostería fina. Horneados diariamente con ingredientes de primera calidad.
+      </p>
+      
+      <div class="hero-actions">
+        <a href="#catalogo" class="btn-primary" id="btn-catalogo">
+          <i class="fa-solid fa-store"></i> Explorar Catálogo
+        </a>
+        <a href="https://wa.me/573214620314" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-hero-wa" id="btn-whatsapp-hero">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#25d366" style="vertical-align:middle;margin-right:6px;"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2ZM12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.59 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67ZM9.05 7.62C8.87 7.62 8.58 7.69 8.33 7.96C8.08 8.23 7.38 8.88 7.38 10.22C7.38 11.56 8.36 12.85 8.5 13.03C8.63 13.22 10.42 15.98 13.16 17.16C13.81 17.44 14.32 17.61 14.71 17.74C15.37 17.95 15.97 17.92 16.44 17.85C16.97 17.77 18.07 17.18 18.3 16.53C18.53 15.88 18.53 15.33 18.46 15.21C18.39 15.09 18.21 15.03 17.94 14.89C17.66 14.75 16.32 14.09 16.07 14C15.82 13.91 15.64 13.86 15.46 14.14C15.28 14.41 14.76 15.03 14.6 15.21C14.44 15.39 14.28 15.42 14.01 15.28C13.73 15.14 12.84 14.85 11.79 13.91C10.97 13.18 10.42 12.28 10.26 12.01C10.1 11.73 10.24 11.58 10.38 11.44C10.51 11.31 10.66 11.11 10.8 10.95C10.94 10.79 10.99 10.67 11.08 10.49C11.17 10.31 11.13 10.15 11.06 10.01C11 9.87 10.45 8.52 10.22 7.97C10 7.44 9.77 7.51 9.6 7.51C9.44 7.5 9.25 7.5 9.05 7.5V7.62Z"/></svg>
+          WhatsApp
+        </a>
+        <a href="https://www.instagram.com/dulcetentacion1413?dlrf=MTFwOXV3djd4NnV2cg==" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-hero-ig" id="btn-ig-hero">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#e1306c" style="vertical-align:middle;margin-right:6px;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          Instagram
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61592760298786&mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-hero-fb" id="btn-fb-hero">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#1877f2" style="vertical-align:middle;margin-right:6px;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Facebook
+        </a>
+      </div>
+      
+      <div class="hero-features">
+        <div class="feature-item">
+          <i class="fa-solid fa-circle-check"></i>
+          <span>100% Artesanal</span>
+        </div>
+        <div class="feature-item">
+          <i class="fa-solid fa-truck-fast"></i>
+          <span>domicilios solo para tiendas</span>
+        </div>
+        <div class="feature-item">
+          <i class="fa-solid fa-fire-burner"></i>
+          <span>Horneado Diario</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="hero-gallery-wrapper">
+      <div class="hero-image-card">
+        <img src="imagenes/torta_stitch.jpg" alt="Torta Personalizada Stitch - Dulce Tentación" onerror="this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=700&q=80'">
+        <div class="floating-badge">
+          <div class="badge-icon"><i class="fa-solid fa-award"></i></div>
+          <div class="badge-text">
+            <strong>Calidad Garantizada</strong>
+            <span>Torta Personalizada Artesanal</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section class="about-section" id="nosotros">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image-wrapper">
+        <div class="about-image-card">
+          <img src="imagenes/torta_fresita.jpg" alt="Torta Artesanal Rosita Fresita - Dulce Tentación" onerror="this.src='https://images.unsplash.com/photo-1509440159596-0249088772ff?w=700&q=80'">
+          <div class="about-badge">
+            <i class="fa-solid fa-heart-pulse"></i> Elaborado con Pasión
+          </div>
+        </div>
+        <div class="about-stats-grid">
+          <div class="stat-card" id="sc-artesanal">
+            <div class="stat-icon"><i class="fa-solid fa-wheat-awn"></i></div>
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Artesanal</div>
+          </div>
+          <div class="stat-card" id="sc-horno">
+            <div class="stat-icon"><i class="fa-solid fa-clock"></i></div>
+            <div class="stat-number">6:00 AM</div>
+            <div class="stat-label">Horneado Diario</div>
+          </div>
+          <div class="stat-card" id="sc-clientes">
+            <div class="stat-icon"><i class="fa-solid fa-face-smile"></i></div>
+            <div class="stat-number">+1000</div>
+            <div class="stat-label">Clientes Felices</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="about-content">
+        <div class="section-tag"><i class="fa-solid fa-store"></i> Nuestra Esencia &amp; Tradición</div>
+        <h2 class="about-title">Conoce la historia detrás de <span>Dulce Tentación</span></h2>
+        <p class="about-lead">
+          Somos una panadería y pastelería artesanal nacida de la pasión por el sabor auténtico, el aroma del pan recién horneado y la calidez de atender a nuestra comunidad con amor en cada detalle.
+        </p>
+        <p class="about-text">
+          Cada madrugada encendemos nuestros hornos en la <strong>Urbanización San Jacinto, Diagonal 2B #5-45, Tocaima</strong> para preparar productos elaborados con recetas tradicionales, ingredientes frescos de primera calidad y sin preservantes artificiales. Nos dedicamos a hacer de cada bocado una experiencia memorable.
+        </p>
+        
+        <div class="about-pillars">
+          <div class="pillar-card" id="pillar-mision">
+            <div class="pillar-icon"><i class="fa-solid fa-bullseye"></i></div>
+            <div class="pillar-info">
+              <h4>Nuestra Misión</h4>
+              <p>Ofrecer productos frescos, deliciosos y preparados con dedicación, brindando siempre una atención amable y respetuosa. Queremos ser un lugar acogedor donde las familias disfruten de pan y postres de calidad, creando momentos especiales juntos.</p>
+            </div>
+          </div>
+          <div class="pillar-card" id="pillar-vision">
+            <div class="pillar-icon"><i class="fa-solid fa-eye"></i></div>
+            <div class="pillar-info">
+              <h4>Nuestra Visión</h4>
+              <p>Ser reconocidos como una panadería destacada por su calidad, variedad y buen servicio. Aspiramos a crecer, generar empleo y ser un ejemplo de emprendimiento donde la responsabilidad, creatividad y pasión alcancen grandes metas.</p>
+            </div>
+          </div>
+          <div class="pillar-card" id="pillar-valores">
+            <div class="pillar-icon"><i class="fa-solid fa-gem"></i></div>
+            <div class="pillar-info">
+              <h4>Nuestros Valores</h4>
+              <p>Frescura garantizada, honestidad en los ingredientes, trabajo hecho con pasión y compromiso absoluto con la satisfacción de cada cliente.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPO DE TRABAJO -->
+<section class="team-section" id="equipo">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-subtitle">Manos Artesanales</span>
+      <h2 class="section-title">Nuestro Equipo de Trabajo</h2>
+      <p class="section-description">Talento, creatividad y dedicación para llevar la mejor experiencia a tu mesa.</p>
+    </div>
+    
+    <div class="team-grid">
+      <!-- Karen Jimenez -->
+      <div class="team-card" id="tc-karen">
+        <div class="team-avatar-wrapper">
+          <div class="team-avatar"><i class="fa-solid fa-crown"></i></div>
+          <span class="team-role-tag">Líder</span>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Karen Jimenez</div>
+          <div class="team-specialty">👑 Líder del Proyecto</div>
+          <p class="team-bio">Coordinación general, liderazgo estratégico y dirección integral del proyecto Dulce Tentación.</p>
+          <div class="team-badges">
+            <span class="mini-badge"><i class="fa-solid fa-check"></i> Liderazgo</span>
+            <span class="mini-badge"><i class="fa-solid fa-check"></i> Coordinación</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sofia Abril -->
+      <div class="team-card" id="tc-sofia">
+        <div class="team-avatar-wrapper">
+          <div class="team-avatar"><i class="fa-solid fa-bullhorn"></i></div>
+          <span class="team-role-tag">Comunicación</span>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Sofia Abril</div>
+          <div class="team-specialty">📢 Comunicadora &amp; Documentadora</div>
+          <p class="team-bio">Gestión de la comunicación, redacción institucional y documentación de procesos del proyecto.</p>
+          <div class="team-badges">
+            <span class="mini-badge"><i class="fa-solid fa-check"></i> Comunicación</span>
+            <span class="mini-badge"><i class="fa-solid fa-check"></i> Documentación</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Danna Arias -->
+      <div class="team-card" id="tc-danna">
+        <div class="team-avatar-wrapper">
+          <div class="team-avatar"><i class="fa-solid fa-palette"></i></div>
+          <span class="team-role-tag">Diseño</span>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Danna Arias</div>
+          <div class="team-specialty">🎨 Diseñadora UX &amp; UI</div>
+          <p class="team-bio">Diseño de experiencia de usuario, interfaz visual, maquetación estética y armonía gráfica del portal.</p>
+          <div class="team-badges">
+            <span class="mini-badge"><i class="fa-solid fa-check"></i> Diseño UX</span>
+            <span class="mini-badge"><i class="fa-solid fa-check"></i> Diseño UI</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Felipe Gamez -->
+      <div class="team-card" id="tc-felipe">
+        <div class="team-avatar-wrapper">
+          <div class="team-avatar"><i class="fa-solid fa-laptop-code"></i></div>
+          <span class="team-role-tag">Desarrollo</span>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Felipe Gamez</div>
+          <div class="team-specialty">💻 Desarrollador &amp; Tester</div>
+          <p class="team-bio">Programación frontend, lógica de interactividad del carrito, pruebas y control de calidad técnico.</p>
+          <div class="team-badges">
+            <span class="mini-badge"><i class="fa-solid fa-check"></i> Programación</span>
+            <span class="mini-badge"><i class="fa-solid fa-check"></i> Testing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JUSTIFICACION / POR QUE DIGITAL -->
+<section class="justification-section" id="justificacion">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-subtitle">Transformación Digital</span>
+      <h2 class="section-title">¿Por qué un Catálogo Digital para nuestra Panadería?</h2>
+      <p class="section-description">
+        La plataforma web centraliza nuestros productos de panadería para brindarte una experiencia más rápida, transparente y accesible desde cualquier lugar.
+      </p>
+    </div>
+    
+    <div class="justification-grid">
+      <div class="justification-card" id="jc-acceso">
+        <div class="card-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+        <h3>Acceso Fácil e Inmediato</h3>
+        <p>Permite a nuestros clientes explorar todo el menú de productos, precios e ingredientes detallados en cualquier momento y desde cualquier dispositivo sin desplazamientos.</p>
+      </div>
+      
+      <div class="justification-card" id="jc-organizacion">
+        <div class="card-icon"><i class="fa-solid fa-layer-group"></i></div>
+        <h3>Organización Centralizada</h3>
+        <p>Reúne en un solo lugar nuestros panes tradicionales, especialidades en repostería y tortas de ocasión con fotografías reales de cada producto ofertado.</p>
+      </div>
+      
+      <div class="justification-card" id="jc-pedidos">
+        <div class="card-icon"><i class="fa-brands fa-whatsapp"></i></div>
+        <h3>Pedidos Rápidos por WhatsApp</h3>
+        <p>Optimiza tu tiempo agregando tus productos al carrito interactivo para enviar tu pedido listo y calculado directamente a nuestro WhatsApp oficial.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATALOGO DE PRODUCTOS -->
+<section class="catalog-section" id="catalogo">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-subtitle">Menú Delicioso</span>
+      <h2 class="section-title">Nuestros Productos Ofertados</h2>
+      <p class="section-description">Explora nuestra amplia variedad de panadería y repostería horneada con dedicación.</p>
+    </div>
+    
+    <div class="catalog-toolbar">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" class="search-input" id="search-input" placeholder="Buscar por nombre...">
+      </div>
+      
+      <div class="category-pills" id="category-pills">
+        <button class="pill-btn active" data-filter="all" id="pill-all">✨ Todos</button>
+        <button class="pill-btn" data-filter="panes" id="pill-panes">🥖 Pan Fresco</button>
+        <button class="pill-btn" data-filter="reposteria" id="pill-reposteria">🍰 Repostería &amp; Galletas</button>
+      </div>
+      
+      <div class="sort-box">
+        <label for="sort-select" class="sort-label"><i class="fa-solid fa-arrow-down-short-wide"></i> Ordenar:</label>
+        <select id="sort-select" class="sort-select">
+          <option value="default">Destacados</option>
+          <option value="price-asc">Precio: Menor a Mayor</option>
+          <option value="price-desc">Precio: Mayor a Menor</option>
+          <option value="rating">Mejor Valorados ⭐</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="products-grid" id="products-grid">
+
+      <!-- 1. Torta Personalizada Stitch -->
+      <article class="product-card" data-category="reposteria" data-name="Torta Personalizada Stitch" data-price="55000" data-rating="5.0" id="prod-stitch">
+        <div class="product-image-wrap">
+          <img src="imagenes/torta_stitch.jpg" alt="Torta Personalizada Stitch" onerror="this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&q=80'" loading="lazy">
+          <span class="product-badge popular">Popular</span>
+          <button class="quick-view-btn" data-id="stitch" aria-label="Vista rápida"><i class="fa-solid fa-eye"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category-tag">Repostería &amp; Galletas</div>
+          <h3 class="product-title">Torta Personalizada Stitch</h3>
+          <p class="product-description">Hermosa torta temática personalizada de Stitch elaborada con masa suave de vainilla o chocolate y decorado artesanal detallado.</p>
+          <div class="product-footer">
+            <div class="product-price">$ 55.000</div>
+            <button class="add-cart-btn" data-name="Torta Personalizada Stitch" data-price="55000" data-img="imagenes/torta_chocolate_1792953593591.jpg">
+              <i class="fa-solid fa-basket-shopping"></i> Agregar
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2. Torta Rosita Fresita -->
+      <article class="product-card" data-category="reposteria" data-name="Torta Rosita Fresita" data-price="55000" data-rating="4.9" id="prod-fresita">
+        <div class="product-image-wrap">
+          <img src="imagenes/torta_fresita.jpg" alt="Torta Rosita Fresita" onerror="this.src='https://images.unsplash.com/photo-1535141192574-5d4897c13136?w=600&q=80'" loading="lazy">
+          <span class="product-badge" style="background:linear-gradient(135deg,#e91e63,#f06292);">Destacado</span>
+          <button class="quick-view-btn" data-id="fresita" aria-label="Vista rápida"><i class="fa-solid fa-eye"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category-tag">Repostería &amp; Galletas</div>
+          <h3 class="product-title">Torta Rosita Fresita</h3>
+          <p class="product-description">Espectacular torta temática de Rosita Fresita, bizcocho esponjoso con crema suave y detalles en fondant/crema rosa artesanal.</p>
+          <div class="product-footer">
+            <div class="product-price">$ 55.000</div>
+            <button class="add-cart-btn" data-name="Torta Rosita Fresita" data-price="55000" data-img="imagenes/torta_chocolate_1792953593591.jpg">
+              <i class="fa-solid fa-basket-shopping"></i> Agregar
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3. Torta Oso Personalizada -->
+      <article class="product-card" data-category="reposteria" data-name="Torta Oso Personalizada" data-price="55000" data-rating="4.8" id="prod-oso">
+        <div class="product-image-wrap">
+          <img src="imagenes/torta_oso.jpg" alt="Torta Oso Personalizada" onerror="this.src='https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=600&q=80'" loading="lazy">
+          <span class="product-badge" style="background:linear-gradient(135deg,#2d8a5e,#45c490);">Nuevo</span>
+          <button class="quick-view-btn" data-id="oso" aria-label="Vista rápida"><i class="fa-solid fa-eye"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category-tag">Repostería &amp; Galletas</div>
+          <h3 class="product-title">Torta Oso Personalizada</h3>
+          <p class="product-description">Encantadora torta personalizada con tierno diseño de oso, ideal para cumpleaños, baby showers y celebraciones especiales.</p>
+          <div class="product-footer">
+            <div class="product-price">$ 55.000</div>
+            <button class="add-cart-btn" data-name="Torta Oso Personalizada" data-price="55000" data-img="imagenes/torta_chocolate_1792953593591.jpg">
+              <i class="fa-solid fa-basket-shopping"></i> Agregar
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4. Torta Cancha de Fútbol -->
+      <article class="product-card" data-category="reposteria" data-name="Torta Temática Personalizada" data-price="60000" data-rating="4.9" id="prod-futbol">
+        <div class="product-image-wrap">
+          <img src="imagenes/torta_spiderman.jpg" alt="Torta Temática Personalizada" onerror="this.src='https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?w=600&q=80'" loading="lazy">
+          <span class="product-badge" style="background:linear-gradient(135deg,#2e7d32,#4caf50);">Favorito</span>
+          <button class="quick-view-btn" data-id="futbol" aria-label="Vista rápida"><i class="fa-solid fa-eye"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category-tag">Repostería &amp; Galletas</div>
+          <h3 class="product-title">Torta Cancha de Fútbol</h3>
+          <p class="product-description">Torta temática personalizada con diseño de cancha de fútbol, perfecta para fanáticos del deporte y cumpleaños infantiles.</p>
+          <div class="product-footer">
+            <div class="product-price">$ 60.000</div>
+            <button class="add-cart-btn" data-name="Torta Cancha de Fútbol" data-price="60000" data-img="imagenes/torta_chocolate_1792953593591.jpg">
+              <i class="fa-solid fa-basket-shopping"></i> Agregar
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5. Torta Corazón Romántica -->
+      <article class="product-card" data-category="reposteria" data-name="Torta Corazón Romántica" data-price="52000" data-rating="5.0" id="prod-corazon">
+        <div class="product-image-wrap">
+          <img src="imagenes/torta_corazon.jpg" alt="Torta Corazón Romántica" onerror="this.src='https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=600&q=80'" loading="lazy">
+          <span class="product-badge" style="background:linear-gradient(135deg,#c2185b,#e91e63);">Especial</span>
+          <button class="quick-view-btn" data-id="corazon" aria-label="Vista rápida"><i class="fa-solid fa-eye"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category-tag">Repostería &amp; Galletas</div>
+          <h3 class="product-title">Torta Corazón Romántica</h3>
+          <p class="product-description">Elegante torta artesanal en forma de corazón con acabado vintage, perlas comestibles y rosas en crema suave.</p>
+          <div class="product-footer">
+            <div class="product-price">$ 52.000</div>
+            <button class="add-cart-btn" data-name="Torta Corazón Romántica" data-price="52000" data-img="imagenes/torta_chocolate_1792953593591.jpg">
+              <i class="fa-solid fa-basket-shopping"></i> Agregar
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 6. Torta Decorada Girasoles -->
+      <article class="product-card" data-category="reposteria" data-name="Torta Decorada Girasoles" data-price="55000" data-rating="4.8" id="prod-girasoles">
+        <div class="product-image-wrap">
+          <img src="imagenes/torta_girasoles.jpg" alt="Torta Decorada Girasoles" onerror="this.src='https://images.unsplash.com/photo-1535141192574-5d4897c13136?w=600&q=80'" loading="lazy">
+          <span class="product-badge" style="background:linear-gradient(135deg,#f57f17,#fbc02d);">Primaveral</span>
+          <button class="quick-view-btn" data-id="girasoles" aria-label="Vista rápida"><i class="fa-solid fa-eye"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category-tag">Repostería &amp; Galletas</div>
+          <h3 class="product-title">Torta Decorada Girasoles</h3>
+          <p class="product-description">Alegre torta artesanal con hermosos girasoles modelados en crema y bizcocho húmedo con suave relleno.</p>
+          <div class="product-footer">
+            <div class="product-price">$ 55.000</div>
+            <button class="add-cart-btn" data-name="Torta Decorada Girasoles" data-price="55000" data-img="imagenes/torta_chocolate_1792953593591.jpg">
+              <i class="fa-solid fa-basket-shopping"></i> Agregar
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 7. Mantecada Artesanal -->
+      <article class="product-card" data-category="panes" data-name="Mantecada Artesanal" data-price="4500" data-rating="4.9" id="prod-mantecada">
+        <div class="product-image-wrap">
+          <img src="imagenes/mantecada_artesanal.jpg" alt="Mantecada Artesanal" onerror="this.src='https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&q=80'" loading="lazy">
+          <span class="product-badge popular">Popular</span>
+          <button class="quick-view-btn" data-id="mantecada" aria-label="Vista rápida"><i class="fa-solid fa-eye"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category-tag">Pan Fresco</div>
+          <h3 class="product-title">Mantecada Artesanal</h3>
+          <p class="product-description">Deliciosa mantecada artesanal horneada con el tradicional sabor de la casa y miga suave.</p>
+          <div class="product-footer">
+            <div class="product-price">$ 4.500</div>
+            <button class="add-cart-btn" data-name="Mantecada Artesanal" data-price="4500" data-img="imagenes/mantecada_artesanal.jpg">
+              <i class="fa-solid fa-basket-shopping"></i> Agregar
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 8. Torta Tres Leches Clásica -->
+      <article class="product-card" data-category="reposteria" data-name="Torta Tres Leches Clásica" data-price="50000" data-rating="5.0" id="prod-tres-leches">
+        <div class="product-image-wrap">
+          <img src="imagenes/torta_tresleches.jpg" alt="Torta Tres Leches Clásica" onerror="this.src='https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?w=600&q=80'" loading="lazy">
+          <span class="product-badge" style="background:linear-gradient(135deg,#6a3d9a,#9b59b6);">Tradicional</span>
+          <button class="quick-view-btn" data-id="tresleches" aria-label="Vista rápida"><i class="fa-solid fa-eye"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category-tag">Repostería &amp; Galletas</div>
+          <h3 class="product-title">Torta Tres Leches Clásica</h3>
+          <p class="product-description">Torta tres leches artesanal con bizcocho suave bañado en crema de leche, leche condensada y leche evaporada.</p>
+          <div class="product-footer">
+            <div class="product-price">$ 50.000</div>
+            <button class="add-cart-btn" data-name="Torta Tres Leches Clásica" data-price="50000" data-img="imagenes/torta_chocolate_1792953593591.jpg">
+              <i class="fa-solid fa-basket-shopping"></i> Agregar
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 9. Calado Artesanal -->
+      <article class="product-card" data-category="panes" data-name="Calado Artesanal" data-price="2000" data-rating="4.7" id="prod-calado">
+        <div class="product-image-wrap">
+          <img src="imagenes/calado_artesanal.jpg" alt="Calado Artesanal" onerror="this.src='https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=600&q=80'" loading="lazy">
+          <span class="product-badge" style="background:linear-gradient(135deg,#d35400,#e67e22);">Crujiente</span>
+          <button class="quick-view-btn" data-id="calado" aria-label="Vista rápida"><i class="fa-solid fa-eye"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category-tag">Pan Fresco</div>
+          <h3 class="product-title">Calado Artesanal</h3>
+          <p class="product-description">Delicioso calado artesanal crujiente con textura suave y aroma inconfundible.</p>
+          <div class="product-footer">
+            <div class="product-price">$ 2.000</div>
+            <button class="add-cart-btn" data-name="Calado Artesanal" data-price="2000" data-img="imagenes/calado_artesanal.jpg">
+              <i class="fa-solid fa-basket-shopping"></i> Agregar
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 10. Pan Lengua Dulce -->
+      <article class="product-card" data-category="panes" data-name="Pan Lengua Dulce" data-price="2000" data-rating="4.8" id="prod-lengua">
+        <div class="product-image-wrap">
+          <img src="imagenes/pan_lengua.jpg" alt="Pan Lengua Dulce" onerror="this.src='https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=600&q=80'" loading="lazy">
+          <span class="product-badge popular">Popular</span>
+          <button class="quick-view-btn" data-id="lengua" aria-label="Vista rápida"><i class="fa-solid fa-eye"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category-tag">Pan Fresco</div>
+          <h3 class="product-title">Pan Lengua Dulce</h3>
+          <p class="product-description">Tradicional pan lengua dulce y crujiente de masa hojaldrada espolvoreada con azúcar.</p>
+          <div class="product-footer">
+            <div class="product-price">$ 2.000</div>
+            <button class="add-cart-btn" data-name="Pan Lengua Dulce" data-price="2000" data-img="imagenes/pan_lengua.jpg">
+              <i class="fa-solid fa-basket-shopping"></i> Agregar
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 11. Pan Rollo Tradicional -->
+      <article class="product-card" data-category="panes" data-name="Pan Rollo Tradicional" data-price="2000" data-rating="4.9" id="prod-rollo">
+        <div class="product-image-wrap">
+          <img src="imagenes/pan_rollo.jpg" alt="Pan Rollo Tradicional" onerror="this.src='https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&q=80'" loading="lazy">
+          <span class="product-badge" style="background:linear-gradient(135deg,#c9860a,#f5c842);">Destacado</span>
+          <button class="quick-view-btn" data-id="rollo" aria-label="Vista rápida"><i class="fa-solid fa-eye"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category-tag">Pan Fresco</div>
+          <h3 class="product-title">Pan Rollo Tradicional</h3>
+          <p class="product-description">Pan rollo tradicional recién horneado con miga esponjosa y suave.</p>
+          <div class="product-footer">
+            <div class="product-price">$ 2.000</div>
+            <button class="add-cart-btn" data-name="Pan Rollo Tradicional" data-price="2000" data-img="imagenes/pan_rollo.jpg">
+              <i class="fa-solid fa-basket-shopping"></i> Agregar
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 12. Roscón con Arequipe o Bocadillo -->
+      <article class="product-card" data-category="panes" data-name="Roscón con Arequipe o Bocadillo" data-price="2000" data-rating="4.9" id="prod-roscon">
+        <div class="product-image-wrap">
+          <img src="imagenes/roscon.jpg" alt="Roscón con Arequipe o Bocadillo" onerror="this.src='https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&q=80'" loading="lazy">
+          <span class="product-badge" style="background:linear-gradient(135deg,#e65100,#ff9800);">Dulce</span>
+          <button class="quick-view-btn" data-id="roscon" aria-label="Vista rápida"><i class="fa-solid fa-eye"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category-tag">Pan Fresco</div>
+          <h3 class="product-title">Roscón con Arequipe o Bocadillo</h3>
+          <p class="product-description">Delicioso roscón horneado a la perfección relleno con generoso bocadillo o arequipe.</p>
+          <div class="product-footer">
+            <div class="product-price">$ 2.000</div>
+            <button class="add-cart-btn" data-name="Roscón con Arequipe o Bocadillo" data-price="2000" data-img="imagenes/roscon.jpg">
+              <i class="fa-solid fa-basket-shopping"></i> Agregar
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 13. Mogolla Integral -->
+      <article class="product-card" data-category="panes" data-name="Mogolla Integral" data-price="2000" data-rating="4.8" id="prod-mogolla">
+        <div class="product-image-wrap">
+          <img src="imagenes/mogolla_integral.jpg" alt="Mogolla Integral" onerror="this.src='https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&q=80'" loading="lazy">
+          <span class="product-badge" style="background:linear-gradient(135deg,#2e7d32,#4caf50);">Saludable</span>
+          <button class="quick-view-btn" data-id="mogolla" aria-label="Vista rápida"><i class="fa-solid fa-eye"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category-tag">Pan Fresco</div>
+          <h3 class="product-title">Mogolla Integral</h3>
+          <p class="product-description">Mogolla artesanal recién horneada con fibra natural y textura suave.</p>
+          <div class="product-footer">
+            <div class="product-price">$ 2.000</div>
+            <button class="add-cart-btn" data-name="Mogolla Integral" data-price="2000" data-img="imagenes/mogolla_integral.jpg">
+              <i class="fa-solid fa-basket-shopping"></i> Agregar
+            </button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- UBICACION & CONTACTO -->
+<section class="contact-section" id="contacto">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-subtitle">Encuéntranos Fácilmente</span>
+      <h2 class="section-title">Ubicación Exacta por Cuadra &amp; Ruta de Llegada</h2>
+      <p class="section-description">
+        Te mostramos el mapa centrado en la cuadra de nuestra casa en Urbanización San Jacinto, Diagonal 2B #5-45, Tocaima, Cundinamarca, Colombia.
+      </p>
+    </div>
+    
+    <div class="contact-grid">
+      <div class="contact-info-panel">
+        <div class="contact-branch-badge">
+          <i class="fa-solid fa-store"></i> Sede Principal Dulce Tentación
+        </div>
+        <h3 class="branch-title">Ubicación en Cuadra Verificada</h3>
+        
+        <div class="contact-info-item" id="ci-dir">
+          <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <div>
+            <strong>Dirección &amp; Cuadra:</strong>
+            <p><a href="https://www.google.com/maps/search/?api=1&query=Diagonal+2B+%235-45,+Urbanizaci%C3%B3n+San+Jacinto,+Tocaima,+Cundinamarca" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">Urbanización San Jacinto, Diagonal 2B #5-45, Tocaima, Cundinamarca, Colombia</a></p>
+          </div>
+        </div>
+
+        <div class="contact-info-item" id="ci-ruta">
+          <div class="contact-icon"><i class="fa-solid fa-route"></i></div>
+          <div>
+            <strong>Recorrido por la Cuadra:</strong>
+            <p>Ingresa a la Urbanización San Jacinto desde la vía principal de Tocaima, toma la cuadra de la Diagonal 2B y avanza todo el camino directo hasta la casa #5-45.</p>
+          </div>
+        </div>
+
+        <div class="contact-info-item" id="ci-horario">
+          <div class="contact-icon"><i class="fa-solid fa-clock"></i></div>
+          <div>
+            <strong>Horarios de Atención:</strong>
+            <p>Lunes a Domingo de 6:00 am a 9:00 pm</p>
+          </div>
+        </div>
+
+        <div class="contact-info-item" id="ci-tel">
+          <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+          <div>
+            <strong>Teléfono / WhatsApp:</strong>
+            <p>+57 321 462 0314</p>
+          </div>
+        </div>
+
+        <div class="contact-info-item" id="ci-social">
+          <div class="contact-icon"><i class="fa-brands fa-instagram"></i></div>
+          <div>
+            <strong>Redes Sociales &amp; Correo:</strong>
+            <p><a href="https://www.instagram.com/dulcetentacion1413?dlrf=MTFwOXV3djd4NnV2cg==" target="_blank" style="color:var(--primary);font-weight:600;"><i class="fa-brands fa-instagram"></i> @dulcetentacion1413</a> &bull; <a href="https://www.facebook.com/profile.php?id=61592760298786&mibextid=ZbWKwL" target="_blank" style="color:var(--primary);font-weight:600;"><i class="fa-brands fa-facebook"></i> Facebook</a> &bull; tentaciond084@gmail.com</p>
+          </div>
+        </div>
+
+        <!-- Botón copiar dirección -->
+        <button class="copy-address-btn" id="btn-copy-address" onclick="navigator.clipboard.writeText('Urbanización San Jacinto, Diagonal 2B #5-45, Tocaima, Cundinamarca').then(()=>{this.innerHTML='<i class=\'fa-solid fa-check\'></i> ¡Copiada!';setTimeout(()=>{this.innerHTML='<i class=\'fa-solid fa-copy\'></i> Copiar dirección';},2000)})">
+          <i class="fa-solid fa-copy"></i> Copiar dirección
+        </button>
+
+        <!-- Pasos de ruta -->
+        <div class="route-steps-card" style="margin-top:8px;">
+          <strong style="font-size:0.85rem;color:var(--espresso);display:flex;align-items:center;gap:8px;"><i class="fa-solid fa-signs-post" style="color:var(--primary);"></i> Cómo llegar:</strong>
+          <div class="route-step-item">
+            <span class="route-step-num">1</span>
+            <span class="route-step-text">Ingresa a Tocaima por la vía principal desde Bogotá o Girardot.</span>
+          </div>
+          <div class="route-step-item">
+            <span class="route-step-num">2</span>
+            <span class="route-step-text">Busca la <strong>Urbanización San Jacinto</strong> en el sector norte del pueblo.</span>
+          </div>
+          <div class="route-step-item">
+            <span class="route-step-num">3</span>
+            <span class="route-step-text">Toma la <strong>Diagonal 2B</strong> y llega hasta la casa <strong>#5-45</strong>.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAPA BIEN HECHO - GOOGLE MAPS EMBED -->
+      <div class="map-card-wrapper">
+        <!-- Barra superior con dirección y coordenadas -->
+        <div class="map-card-topbar">
+          <div class="map-location-tag">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Diagonal 2B #5-45, Urb. San Jacinto · Tocaima</span>
+          </div>
+          <span class="map-coords-badge">4.4627° N, 74.6320° W</span>
+        </div>
+
+        <!-- Mapa de Google Maps embebido con coordenadas exactas de San Jacinto II Tocaima -->
+        <div class="map-iframe-container">
+          <iframe
+            title="Dulce Tentación – Urb. San Jacinto Diagonal 2B #5-45, Tocaima, Cundinamarca"
+            src="https://maps.google.com/maps?q=4.4627348,-74.6320051+(Dulce+Tentaci%C3%B3n+Panader%C3%ADa)&hl=es&z=17&output=embed"
+            loading="lazy"
+            allowfullscreen=""
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+        <!-- Botones de acción debajo del mapa -->
+        <div class="map-actions-bar">
+          <a href="https://www.google.com/maps/search/?api=1&query=4.4627348,-74.6320051" target="_blank" rel="noopener noreferrer" class="btn-map-action google-maps">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#1a73e8"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Google Maps
+          </a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=4.4627348,-74.6320051" target="_blank" rel="noopener noreferrer" class="btn-map-action gps-route">
+            <i class="fa-solid fa-route"></i> Cómo llegar
+          </a>
+          <a href="https://waze.com/ul?ll=4.4627348,-74.6320051&navigate=yes" target="_blank" rel="noopener noreferrer" class="btn-map-action waze-app">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#00d2f3"><path d="M20.54 6.63A10.42 10.42 0 0 0 12 2a10.41 10.41 0 0 0-8.52 4.61A10.36 10.36 0 0 0 2 12.07a10.5 10.5 0 0 0 2.52 6.83L4 22l4.63-.54A10.46 10.46 0 0 0 12 22a10.42 10.42 0 0 0 9.55-6.24 10.35 10.35 0 0 0-.01-9.13zm-4.6 6.17a1.2 1.2 0 1 1 0-2.4 1.2 1.2 0 0 1 0 2.4zm-7.88 0a1.2 1.2 0 1 1 0-2.4 1.2 1.2 0 0 1 0 2.4zm3.94 4a4.86 4.86 0 0 1-4.12-2.28.5.5 0 0 1 .85-.53A3.84 3.84 0 0 0 12 15.8a3.84 3.84 0 0 0 3.27-1.81.5.5 0 0 1 .85.53A4.86 4.86 0 0 1 12 16.8z"/></svg>
+            Waze
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand-logo" style="margin-bottom:14px;">
+          <div class="logo-icon-wrap"><img src="imagenes/logo_dulcetentacion.png" alt="Dulce Tentación Logo"></div>
+          <div class="brand-text">
+            <h1 style="color:#fff;">DULCE TENTACION</h1>
+            <span style="color:var(--gold-soft);">Panadería &amp; Pastelería Artesanal</span>
+          </div>
+        </div>
+        <p class="footer-desc">
+          Panadería y Pastelería Artesanal dedicada a ofrecer productos frescos, elaborados con recetas tradicionales e ingredientes seleccionados con amor.
+        </p>
+        <div class="footer-social">
+          <a href="https://wa.me/573214620314" target="_blank" aria-label="WhatsApp" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://www.instagram.com/dulcetentacion1413?dlrf=MTFwOXV3djd4NnV2cg==" target="_blank" aria-label="Instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.facebook.com/profile.php?id=61592760298786&mibextid=ZbWKwL" target="_blank" aria-label="Facebook" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="mailto:tentaciond084@gmail.com" aria-label="Correo" title="Correo Electrónico"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Enlaces Rápidos</h4>
+        <ul class="footer-links">
+          <li><a href="#inicio"><i class="fa-solid fa-chevron-right"></i> Inicio</a></li>
+          <li><a href="#nosotros"><i class="fa-solid fa-chevron-right"></i> Nosotros</a></li>
+          <li><a href="#equipo"><i class="fa-solid fa-chevron-right"></i> Equipo de Trabajo</a></li>
+          <li><a href="#justificacion"><i class="fa-solid fa-chevron-right"></i> ¿Por qué Digital?</a></li>
+          <li><a href="#catalogo"><i class="fa-solid fa-chevron-right"></i> Catálogo Completo</a></li>
+          <li><a href="javascript:void(0)" id="footer-admin-link"><i class="fa-solid fa-lock"></i> Panel Administrativo</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Categorías</h4>
+        <ul class="footer-links">
+          <li><a href="#catalogo" class="cat-link" data-cat="panes"><i class="fa-solid fa-chevron-right"></i> Pan Fresco</a></li>
+          <li><a href="#catalogo" class="cat-link" data-cat="reposteria"><i class="fa-solid fa-chevron-right"></i> Repostería &amp; Galletas</a></li>
+          <li><a href="#catalogo"><i class="fa-solid fa-chevron-right"></i> Tortas Personalizadas</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Contacto &amp; Horarios</h4>
+        <div class="contact-info">
+          <p><a href="https://www.google.com/maps/search/?api=1&query=Diagonal+2B+%235-45,+Urbanizaci%C3%B3n+San+Jacinto,+Tocaima,+Cundinamarca" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;"><i class="fa-solid fa-location-dot" style="color:var(--gold-soft);"></i> Urbanización San Jacinto, Diagonal 2B #5-45, Tocaima, Cundinamarca</a></p>
+          <p><i class="fa-solid fa-clock" style="color:var(--gold-soft);"></i> Lunes a Domingo de 6:00am a 9:00pm</p>
+          <p><i class="fa-solid fa-phone" style="color:var(--gold-soft);"></i> +57 321 462 0314</p>
+          <p><i class="fa-solid fa-envelope" style="color:var(--gold-soft);"></i> tentaciond084@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 DULCE TENTACION. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<!-- MODAL VISTA RAPIDA -->
+<div class="modal-overlay" id="quick-view-modal">
+  <div class="modal-card">
+    <button class="modal-close" id="modal-close" aria-label="Cerrar ventana"><i class="fa-solid fa-xmark"></i></button>
+    <div class="modal-grid">
+      <div class="modal-image-wrap">
+        <img id="modal-img" src="" alt="Producto">
+        <span class="modal-badge" id="modal-badge">Artesanal</span>
+      </div>
+      <div class="modal-info">
+        <span class="modal-category" id="modal-category">Panes</span>
+        <h3 class="modal-title" id="modal-title">Nombre del Producto</h3>
+        <div class="modal-price" id="modal-price">$0</div>
+        <p class="modal-desc" id="modal-desc">Descripción del producto...</p>
+        <div class="modal-highlights">
+          <div class="highlight-item"><i class="fa-solid fa-wheat-awn"></i> 100% Artesanal</div>
+          <div class="highlight-item"><i class="fa-solid fa-fire"></i> Horneado Diario</div>
+          <div class="highlight-item"><i class="fa-solid fa-leaf"></i> Sin Preservantes</div>
+        </div>
+        <div class="modal-actions">
+          <div class="quantity-control">
+            <button class="qty-btn" id="qty-minus" aria-label="Disminuir"><i class="fa-solid fa-minus"></i></button>
+            <span class="qty-display" id="modal-qty">1</span>
+            <button class="qty-btn" id="qty-plus" aria-label="Aumentar"><i class="fa-solid fa-plus"></i></button>
+          </div>
+          <button class="btn-primary modal-add-btn" id="modal-add-btn">
+            <i class="fa-solid fa-basket-shopping"></i> Agregar al Pedido
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- MODAL DE ACCESO / LOGIN ADMINISTRADOR -->
+<div class="modal-overlay" id="admin-login-modal">
+  <div class="admin-login-card">
+    <button class="modal-close" id="admin-login-close" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+    <div class="admin-login-header">
+      <div class="admin-lock-icon"><img src="imagenes/logo_dulcetentacion.png" alt="Dulce Tentación Logo"></div>
+      <h3>Panel de Administración</h3>
+      <p>Acceso exclusivo para el equipo de <strong>Dulce Tentación</strong></p>
+    </div>
+    <form id="admin-login-form" class="admin-login-form">
+      <div class="form-group">
+        <label for="admin-pass">Contraseña de Administrador:</label>
+        <div class="input-password-wrap">
+          <i class="fa-solid fa-key input-icon"></i>
+          <input type="password" id="admin-pass" placeholder="Ingresa la contraseña..." required autocomplete="current-password">
+          <button type="button" id="toggle-pass-visibility" class="toggle-pass-btn" aria-label="Mostrar contraseña"><i class="fa-solid fa-eye"></i></button>
+        </div>
+      </div>
+      <div id="login-error-msg" class="login-error-msg"></div>
+      <button type="submit" class="btn-primary" style="width:100%;justify-content:center;margin-top:10px;">
+        <i class="fa-solid fa-right-to-bracket"></i> Ingresar al Panel
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- PANEL DE ADMINISTRACION COMPLETO -->
+<div class="modal-overlay" id="admin-panel-modal">
+  <div class="admin-panel-window">
+    <!-- Header Admin -->
+    <div class="admin-panel-topbar">
+      <div class="admin-brand">
+        <div class="admin-badge-icon"><img src="imagenes/logo_dulcetentacion.png" alt="Dulce Tentación Logo"></div>
+        <div>
+          <h2>Panel de Control &bull; Dulce Tentación</h2>
+          <span>Gestión de Catálogo, Pedidos y Tienda &bull; <strong>Tocaima</strong></span>
+        </div>
+      </div>
+      <div class="admin-topbar-actions">
+        <span class="admin-session-badge"><i class="fa-solid fa-circle"></i> Sesión Activa</span>
+        <button class="btn-sm-outline" id="admin-view-store"><i class="fa-solid fa-store"></i> Ver Tienda</button>
+        <button class="btn-sm-danger" id="admin-logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Salir</button>
+        <button class="admin-window-close" id="admin-panel-close" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+    </div>
+
+    <!-- Metricas Resumen -->
+    <div class="admin-stats-row">
+      <div class="admin-stat-box">
+        <div class="as-icon" style="background:#fef3c7;color:#d97706;"><i class="fa-solid fa-bread-slice"></i></div>
+        <div class="as-info">
+          <span class="as-label">Total Productos</span>
+          <strong class="as-value" id="stat-total-products">13</strong>
+        </div>
+      </div>
+      <div class="admin-stat-box">
+        <div class="as-icon" style="background:#dcfce7;color:#16a34a;"><i class="fa-solid fa-basket-shopping"></i></div>
+        <div class="as-info">
+          <span class="as-label">Pedidos Registrados</span>
+          <strong class="as-value" id="stat-total-orders">0</strong>
+        </div>
+      </div>
+      <div class="admin-stat-box">
+        <div class="as-icon" style="background:#e0e7ff;color:#4f46e5;"><i class="fa-solid fa-sack-dollar"></i></div>
+        <div class="as-info">
+          <span class="as-label">Ventas Estimadas</span>
+          <strong class="as-value" id="stat-total-sales">$ 0</strong>
+        </div>
+      </div>
+      <div class="admin-stat-box">
+        <div class="as-icon" style="background:#fce7f3;color:#db2777;"><i class="fa-solid fa-users"></i></div>
+        <div class="as-info">
+          <span class="as-label">Administrador</span>
+          <strong class="as-value" style="font-size:1.05rem;">Karen Jimenez</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pestañas de Navegacion Admin -->
+    <div class="admin-nav-tabs">
+      <button class="admin-tab active" data-tab="tab-productos"><i class="fa-solid fa-box-open"></i> Catálogo de Productos</button>
+      <button class="admin-tab" data-tab="tab-pedidos"><i class="fa-solid fa-clock-rotate-left"></i> Historial de Pedidos</button>
+      <button class="admin-tab" data-tab="tab-ajustes"><i class="fa-solid fa-sliders"></i> Ajustes de Tienda</button>
+    </div>
+
+    <!-- Contenido de Pestañas -->
+    <div class="admin-tabs-content">
+      
+      <!-- TAB 1: PRODUCTOS -->
+      <div class="admin-tab-pane active" id="tab-productos">
+        <div class="admin-pane-toolbar">
+          <div class="admin-search-wrap">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="admin-search-input" placeholder="Filtrar productos en la tabla...">
+          </div>
+          <button class="btn-primary" id="btn-open-create-product">
+            <i class="fa-solid fa-plus"></i> Agregar Nuevo Producto
+          </button>
+        </div>
+
+        <div class="admin-table-container">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Foto</th>
+                <th>Nombre</th>
+                <th>Categoría</th>
+                <th>Precio</th>
+                <th>Etiqueta</th>
+                <th>Estado</th>
+                <th style="text-align:right;">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="admin-products-tbody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 2: PEDIDOS -->
+      <div class="admin-tab-pane" id="tab-pedidos">
+        <div class="admin-pane-toolbar">
+          <p style="color:var(--text-muted);font-size:0.92rem;">Registro de pedidos generados para enviar por WhatsApp:</p>
+          <button class="btn-sm-danger" id="btn-clear-orders"><i class="fa-solid fa-trash-can"></i> Limpiar Historial</button>
+        </div>
+        <div class="admin-table-container">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Fecha y Hora</th>
+                <th>Detalle del Pedido</th>
+                <th>Total</th>
+                <th>Estado</th>
+                <th style="text-align:right;">Acción</th>
+              </tr>
+            </thead>
+            <tbody id="admin-orders-tbody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 3: AJUSTES -->
+      <div class="admin-tab-pane" id="tab-ajustes">
+        <form id="admin-settings-form" class="admin-settings-form">
+          <div class="settings-grid">
+            <div class="form-group">
+              <label for="setting-banner">Texto del Anuncio Superior (Top Bar):</label>
+              <input type="text" id="setting-banner" value="🥐 ¡Pan fresco recién horneado todos los días! Pedidos al instante vía WhatsApp (domicilios solo para tiendas) 🥖">
+            </div>
+            <div class="form-group">
+              <label for="setting-whatsapp">Número de WhatsApp (con código de país):</label>
+              <input type="text" id="setting-whatsapp" value="573214620314">
+            </div>
+            <div class="form-group">
+              <label for="setting-instagram">Enlace de Instagram:</label>
+              <input type="text" id="setting-instagram" value="https://www.instagram.com/dulcetentacion1413?dlrf=MTFwOXV3djd4NnV2cg==">
+            </div>
+            <div class="form-group">
+              <label for="setting-facebook">Enlace de Facebook:</label>
+              <input type="text" id="setting-facebook" value="https://www.facebook.com/profile.php?id=61592760298786&mibextid=ZbWKwL">
+            </div>
+            <div class="form-group">
+              <label for="setting-address">Dirección de la Panadería:</label>
+              <input type="text" id="setting-address" value="Urbanización San Jacinto, Diagonal 2B #5-45, Tocaima, Cundinamarca, Colombia">
+            </div>
+            <div class="form-group">
+              <label for="setting-hours">Horarios de Atención:</label>
+              <input type="text" id="setting-hours" value="Lunes a Domingo de 6:00 am a 9:00 pm">
+            </div>
+          </div>
+          <button type="submit" class="btn-primary" style="margin-top:20px;">
+            <i class="fa-solid fa-floppy-disk"></i> Guardar Configuración
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODAL PARA CREAR O EDITAR PRODUCTO -->
+<div class="modal-overlay" id="product-form-modal">
+  <div class="admin-product-modal-card">
+    <button class="modal-close" id="product-form-close" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+    <h3 id="product-modal-title">Agregar Nuevo Producto</h3>
+    <form id="product-crud-form" class="product-crud-form">
+      <input type="hidden" id="crud-prod-id">
+      
+      <div class="form-group">
+        <label for="crud-name">Nombre del Producto:</label>
+        <input type="text" id="crud-name" required placeholder="Ej: Torta Especial de Maracuyá">
+      </div>
+
+      <div class="crud-form-row">
+        <div class="form-group">
+          <label for="crud-category">Categoría:</label>
+          <select id="crud-category" required>
+            <option value="panes">🥖 Pan Fresco</option>
+            <option value="reposteria">🍰 Repostería &amp; Galletas</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="crud-price">Precio ($ COP):</label>
+          <input type="number" id="crud-price" required min="100" step="100" placeholder="Ej: 55000">
+        </div>
+      </div>
+
+      <div class="crud-form-row">
+        <div class="form-group">
+          <label for="crud-badge">Etiqueta / Badge:</label>
+          <input type="text" id="crud-badge" placeholder="Ej: Popular, Nuevo, Especial">
+        </div>
+        <div class="form-group">
+          <label for="crud-rating">Calificación (1 a 5):</label>
+          <input type="number" id="crud-rating" min="1" max="5" step="0.1" value="5.0">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="crud-image">Imagen del Producto:</label>
+        <select id="crud-image-select" style="margin-bottom:8px;">
+          <option value="imagenes/torta_stitch.jpg">Torta Personalizada Stitch</option>
+          <option value="imagenes/torta_corazon.jpg">Torta Corazón Romántica Vintage</option>
+          <option value="imagenes/torta_girasoles.jpg">Torta Decorada con Girasoles</option>
+          <option value="imagenes/torta_oso.jpg">Torta Oso Personalizada</option>
+          <option value="imagenes/torta_fresita.jpg">Torta Rosita Fresita</option>
+          <option value="imagenes/torta_tresleches.jpg">Torta Tres Leches Clásica con Fresa</option>
+          <option value="imagenes/torta_spiderman.jpg">Torta Temática Spider-Man</option>
+          <option value="imagenes/torta_chocolate_oreo.jpg">Torta Chocolate Drip &amp; Oreo</option>
+          <option value="imagenes/torta_cafe_moca.jpg">Torta Café Moca</option>
+          <option value="imagenes/torta_celebracion_azul.jpg">Torta Celebración Azul Real</option>
+          <option value="imagenes/torta_caramelo.jpg">Torta Caramelo &amp; Fresa</option>
+          <option value="imagenes/mantecada_artesanal.jpg">Mantecada Artesanal Glaseada</option>
+          <option value="imagenes/pan_lengua.jpg">Pan Lengua Dulce</option>
+          <option value="imagenes/pan_rollo.jpg">Pan Rollo Tradicional</option>
+          <option value="imagenes/calado_artesanal.jpg">Calado Artesanal</option>
+          <option value="imagenes/roscon.jpg">Roscón con Arequipe o Bocadillo</option>
+          <option value="imagenes/mogolla_integral.jpg">Mogolla Integral</option>
+          <option value="custom">Ingresar otra ruta / URL...</option>
+        </select>
+        <input type="text" id="crud-image" required value="imagenes/torta_chocolate_1792953593591.jpg" placeholder="Ruta o URL de la imagen">
+      </div>
+
+      <div class="form-group">
+        <label for="crud-desc">Descripción detallada:</label>
+        <textarea id="crud-desc" rows="3" required placeholder="Describe los ingredientes, aroma y elaboración artesanal..."></textarea>
+      </div>
+
+      <div style="display:flex;gap:12px;margin-top:20px;">
+        <button type="submit" class="btn-primary" style="flex:1;justify-content:center;">
+          <i class="fa-solid fa-check"></i> Guardar Producto
+        </button>
+        <button type="button" class="btn-sm-outline" id="btn-cancel-product" style="padding:12px 20px;">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- CARRITO LATERAL -->
+<div class="cart-drawer-overlay" id="cart-overlay">
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h3><i class="fa-solid fa-basket-shopping" style="color:var(--primary);"></i> Mi Pedido</h3>
+      <button class="cart-close" id="cart-close" aria-label="Cerrar carrito"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="cart-body" id="cart-body">
+      <div class="empty-cart-state" id="empty-cart">
+        <i class="fa-solid fa-basket-shopping"></i>
+        <p>Tu pedido está vacío.<br>Agrega productos del catálogo.</p>
+      </div>
+    </div>
+    <div class="cart-footer" id="cart-footer" style="display:none;">
+      <div class="cart-summary-line"><span>Subtotal</span><span id="cart-subtotal">$0</span></div>
+      <div class="cart-summary-line total"><span>Total</span><span id="cart-total">$0</span></div>
+      <button class="btn-whatsapp" id="btn-wa-order">
+        <i class="fa-brands fa-whatsapp"></i> Enviar pedido por WhatsApp
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast-container" id="toast-container"></div>
+
+<!-- BOTONES FLOTANTES DE REDES SOCIALES (WhatsApp, Instagram, Facebook) -->
+<div class="floating-actions-container" id="floating-actions">
+  <a href="https://www.facebook.com/profile.php?id=61592760298786&mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer" class="floating-btn floating-fb" aria-label="Facebook Dulce Tentación" title="Síguenos en Facebook">
+    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    <span class="floating-tooltip">Facebook</span>
+  </a>
+  <a href="https://www.instagram.com/dulcetentacion1413?dlrf=MTFwOXV3djd4NnV2cg==" target="_blank" rel="noopener noreferrer" class="floating-btn floating-ig" aria-label="Instagram Dulce Tentación" title="Síguenos en Instagram">
+    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    <span class="floating-tooltip">Instagram</span>
+  </a>
+  <a href="https://wa.me/573214620314" target="_blank" rel="noopener noreferrer" class="floating-btn floating-wa" id="floating-wa" aria-label="WhatsApp Dulce Tentación" title="Escríbenos por WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2ZM12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.59 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67ZM9.05 7.62C8.87 7.62 8.58 7.69 8.33 7.96C8.08 8.23 7.38 8.88 7.38 10.22C7.38 11.56 8.36 12.85 8.5 13.03C8.63 13.22 10.42 15.98 13.16 17.16C13.81 17.44 14.32 17.61 14.71 17.74C15.37 17.95 15.97 17.92 16.44 17.85C16.97 17.77 18.07 17.18 18.3 16.53C18.53 15.88 18.53 15.33 18.46 15.21C18.39 15.09 18.21 15.03 17.94 14.89C17.66 14.75 16.32 14.09 16.07 14C15.82 13.91 15.64 13.86 15.46 14.14C15.28 14.41 14.76 15.03 14.6 15.21C14.44 15.39 14.28 15.42 14.01 15.28C13.73 15.14 12.84 14.85 11.79 13.91C10.97 13.18 10.42 12.28 10.26 12.01C10.1 11.73 10.24 11.58 10.38 11.44C10.51 11.31 10.66 11.11 10.8 10.95C10.94 10.79 10.99 10.67 11.08 10.49C11.17 10.31 11.13 10.15 11.06 10.01C11 9.87 10.45 8.52 10.22 7.97C10 7.44 9.77 7.51 9.6 7.51C9.44 7.5 9.25 7.5 9.05 7.5V7.62Z"/></svg>
+    <span class="floating-tooltip">WhatsApp</span>
+  </a>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="back-to-top" aria-label="Volver al inicio">
+  <i class="fa-solid fa-chevron-up"></i>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>
